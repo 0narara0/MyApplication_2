@@ -32,15 +32,16 @@ public class WebViewActivity extends AppCompatActivity {
         // WebView의 설정
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        myWebView.setWebViewClient(new WebViewClient());
+        myWebView.setWebViewClient(new WebViewClient()); // WebViewClient상속받아 재정의 하는 것 영상에 나와있음
         mAddressEdit = findViewById(R.id.address_edit);
         mMoveButton = findViewById(R.id.move_button);
 
-        // 소프트키보드의 돋보기를 클릭했을 때 이동 버튼을 클릭하도록 함
+        // 소프트키보드의 돋보기를 클릭했을 때 이동 버튼을 클릭하도록 함 (익명클래스)
         mAddressEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                                                // v는 mAddressEdit를 가리킴. EditText는 TextView를 상속받음
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) { // EditorInfo에 키보드 키정보 상수로 다 있다.
                     mMoveButton.callOnClick();
 
                     // 키보드 내리기
@@ -64,9 +65,9 @@ public class WebViewActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (myWebView.canGoBack()) {
-            myWebView.goBack();
+            myWebView.goBack();   //웹뷰의 기록이 있으면 이전 페이지로 이동하고
         } else {
-            super.onBackPressed();
+            super.onBackPressed(); // super.onBackPressed();
         }
     }
 
