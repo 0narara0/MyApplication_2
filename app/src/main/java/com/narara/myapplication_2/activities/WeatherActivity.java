@@ -67,6 +67,10 @@ public class WeatherActivity extends AppCompatActivity {
             weatherViewHolder.weatherImageView.setImageResource(weather.getImageRes());
             weatherViewHolder.cityTextView.setText(weather.getCity());
             weatherViewHolder.tempTextView.setText(weather.getTemp());
+            if(i%2 == 1){
+                weatherViewHolder.itemView.setBackgroundResource(android.R.color.holo_blue_bright);
+
+            }
 
 
         }
