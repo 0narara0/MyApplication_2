@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.narara.myapplication_2.R;
 import com.narara.myapplication_2.models.CardItem;
@@ -12,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CardViewActivity extends AppCompatActivity  {
-    //implements CardRecyclerAdapter.CardRecyclerViewClickListener
+public class CardViewActivity extends AppCompatActivity implements CardRecyclerAdapter.CardRecyclerViewClickListener {
+
 
     private static final String TAG = CardViewActivity.class.getSimpleName();
 
@@ -42,28 +43,26 @@ public class CardViewActivity extends AppCompatActivity  {
 
         // 어댑터 설정
         CardRecyclerAdapter adapter = new CardRecyclerAdapter(dataList);
+        adapter.setOnClickListener(this);
         recyclerView.setAdapter(adapter);
-        //adapter.setOnClickListener(this);
 
     }
 
-//    @Override
-//    public void onItemClicked(int i) {
-//        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+    @Override
+    public void onItemClicked(int i) {
+        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 //        //Log.d(TAG, "onItemClicked: " + i);
-//    }
-//
-//    @Override
-//    public void onShareButtonClicked(int i) {
-//        Toast.makeText(this, "Share " + i, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onShareButtonClicked(int i) {
+        Toast.makeText(this, "Share " + i, Toast.LENGTH_SHORT).show();
 //        //Log.d(TAG, "onShareButtonClicked: " + i);
-//    }
-//
-//    @Override
-//    public void onLearnMoreButtonClicked(int i) {
-//        Toast.makeText(this, "More " + i, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLearnMoreButtonClicked(int i) {
+        Toast.makeText(this, "More " + i, Toast.LENGTH_SHORT).show();
 //        //Log.d(TAG, "onLearnMoreButtonClicked: " + i);
-//    }
-
-
+    }
 }

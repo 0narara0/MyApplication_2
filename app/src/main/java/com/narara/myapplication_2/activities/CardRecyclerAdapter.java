@@ -54,12 +54,9 @@ public class CardRecyclerAdapter extends RecyclerView.Adapter<CardRecyclerAdapte
         if (mListener != null) {
             //현재 위치
             final int pos = i;
-            cardViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mListener.onItemClicked(pos);
-                    //mListener.onItemClicked(cardViewHolder.getAdapterPosition());  위에 행과 같은 것
-                }
+            cardViewHolder.itemView.setOnClickListener(v -> {
+                mListener.onItemClicked(pos);
+                //mListener.onItemClicked(cardViewHolder.getAdapterPosition());  위에 행과 같은 것
             });
             cardViewHolder.share.setOnClickListener(new View.OnClickListener() {
                 @Override
